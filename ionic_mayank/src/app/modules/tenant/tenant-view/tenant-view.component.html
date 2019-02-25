@@ -10,7 +10,18 @@
         <ion-col>
          <ion-label>S NO</ion-label>
         </ion-col>
+        <ion-col>
+          <ion-label>TenantId</ion-label>
+         </ion-col>
+         <ion-col>
+            <ion-label>TenantName</ion-label>
+           </ion-col>
       </ion-row>
+      <ion-row *ngFor="let tenant of tenants; let i =index;">
+          <ion-col>{{i}}</ion-col>
+          <ion-col>{{tenant.tenantId}}</ion-col>
+          <ion-col>{{tenant.tenantName}}</ion-col>
+        </ion-row>
     </ion-grid>
 
   </ion-card-content>
