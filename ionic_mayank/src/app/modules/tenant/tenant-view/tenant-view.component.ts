@@ -12,7 +12,8 @@ import { LoadingController } from '@ionic/angular';
 export class TenantViewComponent implements OnInit {
 
   private tenants:Tenant[]=[];
-
+  private model;
+  private model_Caps;
   constructor(private tenantService:TenantService,
     private loadingController:LoadingController
     ) { }
@@ -33,6 +34,10 @@ export class TenantViewComponent implements OnInit {
       .subscribe(res => {
         console.log(res);
         this.tenants= res;
+        this.model=Object.keys(this.tenants[0]);
+        console.log('keys are')
+        console.log(this.model)
+        this.model_Caps=Object.keys(this.tenants[0]).map(r=>r.toUpperCase())
         loading.dismiss();
       }, err => {
         console.log(err);
