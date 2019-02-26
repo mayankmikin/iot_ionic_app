@@ -9,6 +9,7 @@ import { TenantPage } from './tenant.page';
 import { TenantViewComponent } from './tenant-view/tenant-view.component';
 import { TenantAddComponent } from './tenant-add/tenant-add.component';
 import { TenantRemoveComponent } from './tenant-remove/tenant-remove.component';
+import { GrdFilterPipe } from 'src/app/model/grid-filter-pipe';
 
 const routes: Routes = [
   {
@@ -31,8 +32,9 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+   
   ],
-  declarations: [TenantPage,TenantViewComponent,TenantAddComponent,TenantRemoveComponent]
+  declarations: [TenantPage,TenantViewComponent,TenantAddComponent,TenantRemoveComponent,GrdFilterPipe]
 })
 export class TenantPageModule {}

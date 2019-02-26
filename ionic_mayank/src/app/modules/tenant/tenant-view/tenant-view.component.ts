@@ -49,4 +49,5 @@ export class TenantViewComponent implements OnInit {
   // {
   //  return this.tenantService.getAllTenants();
   // }
+  public searchText : string;
 }

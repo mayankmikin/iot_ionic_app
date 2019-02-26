@@ -12,7 +12,7 @@
       <ion-button>
         <!-- <ion-icon slot="icon-only" name="search"></ion-icon> -->
         <!-- Searchbar with a placeholder -->
-<ion-searchbar placeholder="Search Tenant" autocomplete="on"></ion-searchbar>
+<ion-searchbar placeholder="Search Tenant" autocomplete="on" [(ngModel)]="searchText"></ion-searchbar>
       </ion-button>
     </ion-buttons>
     <!-- <ion-title>Create Tenant</ion-title> -->
@@ -46,7 +46,7 @@
          </ion-col> -->
          
       </ion-row>
-      <ion-row *ngFor="let tenant of tenants; let i =index;">
+      <ion-row *ngFor="let tenant of tenants | grdFilter: {tenantId: searchText, tenantName:searchText,code:searchText,domainName:searchText,natureOfIndustry:searchText}; let i =index;  ">
           <ion-col>{{i}}</ion-col>
           <ion-col *ngFor="let attr of model;">{{tenant[attr]}}</ion-col>
           <!-- <ion-col *ngFor="let attr of model;">{{tenant.tenantId}}</ion-col> -->
