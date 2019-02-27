@@ -19,5 +19,9 @@ export class TenantService {
    return  this.httpclient.get<Tenant[]>(this.baseurl);
   }
 
+  saveTenant(tenant:Tenant)
+  {
+   return  this.httpclient.get<Tenant[]>(this.baseurl);
+  }
 
 }

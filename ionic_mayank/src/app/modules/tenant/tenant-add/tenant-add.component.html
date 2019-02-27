@@ -39,25 +39,29 @@
       <form [formGroup]="classroomForm">
         <ion-item>
           <ion-label position="floating">Tenant Name</ion-label>
-          <ion-input type="text" formControlName="class_name"></ion-input>
+          <ion-input type="text" formControlName="tenantName"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Tenant Domain Name</ion-label>
-            <ion-input type="text" formControlName="class_name"></ion-input>
+            <ion-input type="text" formControlName="tenantDomainName"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label position="floating">Tenant Code</ion-label>
-              <ion-input type="text" formControlName="class_name"></ion-input>
+              <ion-input type="text" formControlName="tenantCode"></ion-input>
           </ion-item>
-        
+
 
 <!-- select any  -->
 <ion-list>
     <ion-list-header>Optional</ion-list-header>
     <ion-item>
       <ion-label>Nature Of Industry</ion-label>
-      <ion-select value="brown" okText="Okay" cancelText="Dismiss">
-        <ion-select-option *ngFor="let nature of natureOfIndustry" value={{nature}}>{{nature}}</ion-select-option>
+    <!-- <ion-select [interfaceOptions]="customPopoverOptions" interface="popover" placeholder="Select One" okText="Okay" cancelText="Dismiss"> -->
+        <ion-select formControlName="natIndustry" placeholder="Select One" okText="Okay" cancelText="Dismiss"> 
+      <ion-select-option 
+      *ngFor="let nature of natureOfIndustry"
+      value={{nature}}
+        >{{nature}}</ion-select-option>
       </ion-select>
     </ion-item>
   
@@ -66,7 +70,7 @@
   <!-- select any ends  -->
 
 
-        <ion-button shape="round" color="primary" expand="block" [disabled]="!classroomForm.valid" (click)="saveClassroom()">Submit</ion-button>
+        <ion-button shape="round" color="primary" expand="block" [disabled]="!classroomForm.valid" (click)="saveTenant()">Submit</ion-button>
       </form>
     </ion-content>
 
