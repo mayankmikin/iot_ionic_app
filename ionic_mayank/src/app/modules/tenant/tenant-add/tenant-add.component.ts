@@ -21,7 +21,7 @@ export class TenantAddComponent implements OnInit {
     private route: ActivatedRoute,
     public router: Router,
     ) 
-  {
+   {
     this.tenant= new Tenant();
    }
 

@@ -25,4 +25,13 @@ export class TenantService {
    return  this.httpclient.post<Tenant[]>(this.baseurl,tenant);
   }
 
+  deleteTenant(id:string)
+  {
+    return  this.httpclient.delete(this.baseurl+'/'+id);
+  }
+  deactivateTenant(id:string)
+  {
+    return  this.httpclient.patch(this.baseurl,id);
+  }
+
 }
