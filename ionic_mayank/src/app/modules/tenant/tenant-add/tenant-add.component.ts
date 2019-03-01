@@ -44,6 +44,7 @@ export class TenantAddComponent implements OnInit {
        console.log('tenant response is: ')
        console.log(res)
        loading.dismiss();
+       this.tenant=new Tenant();
        this.router.navigate(['/tenant']);
       }, (err) => {
         console.log(err);
