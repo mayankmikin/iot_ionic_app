@@ -1,9 +1,36 @@
 <ion-card>
   <ion-card-header>
+      <!-- Searchbar in a Toolbar -->
+<ion-toolbar>
+    <!-- <ion-buttons slot="start">
+        <ion-back-button defaultHref="tenant"></ion-back-button>
+      </ion-buttons> -->
+    <ion-buttons slot="primary">
+      <!-- <ion-button>
+        <ion-icon slot="icon-only" name="contact"></ion-icon>
+      </ion-button> -->
+      <ion-button>
+        <!-- <ion-icon slot="icon-only" name="search"></ion-icon> -->
+        <!-- Searchbar with a placeholder -->
+<ion-searchbar placeholder="Search Tenant" autocomplete="on" [(ngModel)]="searchText"></ion-searchbar>
+      </ion-button>
+    </ion-buttons>
+    <!-- <ion-title>Create Tenant</ion-title> -->
+    <ion-buttons slot="primary">
+      <ion-button color="secondary">
+        <ion-icon slot="icon-only" name="more"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  </ion-card-header>
+  <ion-card-header>
+
     <!-- <ion-card-subtitle>Tenant</ion-card-subtitle> -->
-    <ion-card-title>Tenant</ion-card-title>
+    <ion-card-title>Tenant Details</ion-card-title>
+   
   </ion-card-header>
   <ion-content padding>
+  
     </ion-content>
   <ion-card-content>
     <ion-grid>
@@ -13,16 +40,11 @@
         </ion-col>
         <ion-col *ngFor="let attr of model_Caps">
             <ion-label>{{attr}}</ion-label>
-           </ion-col>
-        <!-- <ion-col>
-          <ion-label>TenantId</ion-label>
-         </ion-col> -->
-         
+           </ion-col>       
       </ion-row>
-      <ion-row *ngFor="let tenant of tenants; let i =index;">
+      <ion-row *ngFor="let tenant of tenants | grdFilter: {tenantId: searchText, tenantName:searchText,code:searchText,domainName:searchText,natureOfIndustry:searchText}; let i =index;  ">
           <ion-col>{{i}}</ion-col>
-          <ion-col *ngFor="let attr of model;">{{tenant[attr]}}</ion-col>
-          <!-- <ion-col *ngFor="let attr of model;">{{tenant.tenantId}}</ion-col> -->
+          <ion-col *ngFor="let attr of model;">{{tenant[attr]}}</ion-col>       
         </ion-row>
     </ion-grid>
 
@@ -33,7 +55,7 @@
 
     <ion-tab-button tab="add">
       <ion-label>Add New</ion-label>
-      <ion-icon name="home"></ion-icon>
+      <ion-icon name="add-circle"></ion-icon>
       <!-- <ion-badge>6</ion-badge> -->
     </ion-tab-button>
     <ion-tab-button tab="remove">
