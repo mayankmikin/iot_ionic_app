@@ -21,7 +21,8 @@ export class TenantService {
 
   saveTenant(tenant:Tenant)
   {
-   return  this.httpclient.get<Tenant[]>(this.baseurl);
+   console.log('tenant to save is ',tenant);
+   return  this.httpclient.post<Tenant[]>(this.baseurl,tenant);
   }
 
 }

@@ -16,6 +16,10 @@ const routes: Routes = [
     path: '',
     component: TenantViewComponent
   },
+  // {
+  //   path: 'view',
+  //   component: TenantViewComponent
+  // },
   {
     path: 'add',
     component: TenantAddComponent

@@ -12,8 +12,6 @@ import { Tenant } from 'src/app/model/tenant';
   styleUrls: ['./tenant-add.component.scss'],
 })
 export class TenantAddComponent implements OnInit {
-  classroomForm: FormGroup;
-  students: FormArray;
   tenant:Tenant;
   natureOfIndustry=['GPS','Trading'];
 
@@ -24,40 +22,29 @@ export class TenantAddComponent implements OnInit {
     public router: Router,
     ) 
   {
-    this.classroomForm = this.formBuilder.group({
-      'tenantName' : [null, Validators.required],
-      'tenantDomainName' : [null, Validators.required],
-      'tenantCode' : [null, Validators.required],
-      'natIndustry': [null]
-    });
+    this.tenant= new Tenant();
    }
 
   ngOnInit() {
     console.log(this.natureOfIndustry)
   }
-
-  customActionSheetOptions: any = {
-    header: 'Colors',
-    subHeader: 'Select your favorite color'
-  };
-
-  
-  customPopoverOptions: any = {
-    header: 'Hair Color',
-    subHeader: 'Select your hair color',
-    message: 'Only select your dominant hair color'
-  };
-
   async saveTenant(){
-       console.log(this.classroomForm.value)
+    const loading = await this.loadingController.create({
+      message: 'Saving ...',
+      spinner: 'crescent',
+      duration: 2000
+    });
+    await loading.present();
        console.log('saving the tenant')
        console.log(this.tenant)
-    await this.tenantService.saveTenant(this.classroomForm.value)
+    await this.tenantService.saveTenant(this.tenant)
     .subscribe(res => {
        // let id = res['id'];
        // this.router.navigate(['/detail/'+id]);
-       console.log('saving the tenant')
+       console.log('tenant response is: ')
        console.log(res)
+       loading.dismiss();
+       this.router.navigate(['/tenant']);
       }, (err) => {
         console.log(err);
       });
