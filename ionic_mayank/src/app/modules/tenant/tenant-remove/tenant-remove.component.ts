@@ -16,7 +16,7 @@ export class TenantRemoveComponent implements OnInit {
   private model; // this field is used to show only small keys in the table
   private model_Caps;// this field is used to show headers in the Table
   private enable_checkboxes=false;// this field is used to show hide check boxes
-  private selected_tenants=[]; // this field is used to store all the selected tenants object 
+  private selected_tenants:Tenant[]=[]; // this field is used to store all the selected tenants object 
   private selectAllModel=false; // this field is used to check uncheck  header checkbox 
   constructor(private tenantService:TenantService,
     private loadingController:LoadingController,
@@ -119,6 +119,13 @@ export class TenantRemoveComponent implements OnInit {
         icon: 'trash',
         handler: () => {
           console.log('Delete clicked');
+          this.tenantService.deleteTenant(this.selected_tenants[0].tenantId)
+          .subscribe(res => {
+          }, err => {
+            console.log(err);
+          });
+          this.toggleCheckBoxes()
+          this.getAllTenants()
         }
       }
       // , {
@@ -147,7 +154,7 @@ export class TenantRemoveComponent implements OnInit {
         handler: () => {
           console.log('Cancel clicked');
           this.toggleCheckBoxes()
-          this.selectAllModel=!this.selectAllModel
+          
         }
       }]
     });
@@ -156,10 +163,18 @@ export class TenantRemoveComponent implements OnInit {
 
   toggleCheckBoxes()
   {
-    for(let i =0; i <this.tenants_withAttributes.length; i++) {
-      this.tenants_withAttributes[i].checked = !this.tenants_withAttributes[i].checked;
-    }
     
+      for(let i =0; i <this.tenants_withAttributes.length; i++) {
+        if(this.tenants_withAttributes[i].checked)
+        {
+          this.tenants_withAttributes[i].checked = !this.tenants_withAttributes[i].checked;
+        }
+      }
+
+      if(this.selectAllModel)
+      {
+        this.selectAllModel=!this.selectAllModel
+      }
   }
 
 }
