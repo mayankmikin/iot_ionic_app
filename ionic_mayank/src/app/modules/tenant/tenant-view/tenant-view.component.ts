@@ -44,7 +44,7 @@ export class TenantViewComponent implements OnInit {
         loading.dismiss();
       });
   }
-
+ 
   // getAllTenants():Observable<Tenant[]>
   // {
   //  return this.tenantService.getAllTenants();

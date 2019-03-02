@@ -43,7 +43,7 @@
            </ion-col>       
       </ion-row>
       <ion-row *ngFor="let tenant of tenants | grdFilter: {tenantId: searchText, tenantName:searchText,code:searchText,domainName:searchText,natureOfIndustry:searchText}; let i =index;  ">
-          <ion-col>{{i}}</ion-col>
+        <ion-col>{{i}}</ion-col>
           <ion-col *ngFor="let attr of model;">{{tenant[attr]}}</ion-col>       
         </ion-row>
     </ion-grid>
@@ -58,11 +58,12 @@
       <ion-icon name="add-circle"></ion-icon>
       <!-- <ion-badge>6</ion-badge> -->
     </ion-tab-button>
+    
     <ion-tab-button tab="remove">
         <ion-label>Remove</ion-label>
         <ion-icon name="remove-circle"></ion-icon>
         <!-- <ion-badge>6</ion-badge> -->
-      </ion-tab-button>
+    </ion-tab-button>
     
     <ion-tab-button tab="settings">
       <ion-label>Settings</ion-label>
