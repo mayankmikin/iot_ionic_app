@@ -27,7 +27,6 @@
 
     <!-- <ion-card-subtitle>Tenant</ion-card-subtitle> -->
     <ion-card-title>Tenant Details</ion-card-title>
-   
   </ion-card-header>
   <ion-content padding>
   
@@ -36,7 +35,7 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-         <ion-label>S NO</ion-label>
+         <ion-label>S No</ion-label>
         </ion-col>
         <ion-col *ngFor="let attr of model_Caps">
             <ion-label>{{attr}}</ion-label>
@@ -44,15 +43,26 @@
       </ion-row>
       <ion-row *ngFor="let tenant of tenants | grdFilter: {tenantId: searchText, tenantName:searchText,code:searchText,domainName:searchText,natureOfIndustry:searchText}; let i =index;  ">
         <ion-col>{{i}}</ion-col>
-          <ion-col *ngFor="let attr of model;">{{tenant[attr]}}</ion-col>       
+          <ion-col *ngFor="let attr of model;">{{tenant[attr]}}</ion-col>
+          <!-- Round -->
+         
+          <ion-col>
+            <ion-button (click)="editTenant()" shape="round" color="light">
+                <ion-icon slot="icon-only" name="create"></ion-icon>
+            </ion-button>
+          </ion-col>
+
         </ion-row>
     </ion-grid>
+
+
 
   </ion-card-content>
   <ion-card-content [hidden]="tenants.length!=0">
     Nothing to Display  
   </ion-card-content>
 </ion-card>
+
 
 
 
@@ -71,6 +81,11 @@
         <!-- <ion-badge>6</ion-badge> -->
     </ion-tab-button>
     
+    <!-- <ion-tab-button tab="edit/:id">
+        <ion-label>Edit</ion-label>
+        <ion-icon name="create"></ion-icon>
+    </ion-tab-button> -->
+
     <ion-tab-button tab="settings">
       <ion-label>Settings</ion-label>
       <ion-icon name="settings"></ion-icon>

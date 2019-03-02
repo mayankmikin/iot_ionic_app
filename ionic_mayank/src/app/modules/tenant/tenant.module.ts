@@ -10,6 +10,7 @@ import { TenantViewComponent } from './tenant-view/tenant-view.component';
 import { TenantAddComponent } from './tenant-add/tenant-add.component';
 import { TenantRemoveComponent } from './tenant-remove/tenant-remove.component';
 import { GrdFilterPipe } from 'src/app/model/grid-filter-pipe';
+import { TenantEditComponent } from './tenant-edit/tenant-edit.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'remove',
     component: TenantRemoveComponent
+  },
+  {
+    path: 'edit/:id',
+    component: TenantEditComponent
   }
 ];
 
@@ -39,6 +44,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
    
   ],
-  declarations: [TenantPage,TenantViewComponent,TenantAddComponent,TenantRemoveComponent,GrdFilterPipe]
+  declarations: [TenantPage,TenantViewComponent,TenantAddComponent,TenantRemoveComponent,TenantEditComponent,GrdFilterPipe]
 })
 export class TenantPageModule {}

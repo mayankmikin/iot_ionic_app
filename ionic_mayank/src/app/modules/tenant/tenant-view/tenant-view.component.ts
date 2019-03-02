@@ -50,10 +50,10 @@ export class TenantViewComponent implements OnInit {
         loading.dismiss();
       });
   }
- 
-  // getAllTenants():Observable<Tenant[]>
-  // {
-  //  return this.tenantService.getAllTenants();
-  // }
   public searchText : string;
+  async editTenant()
+  {
+    console.log('inside edit tenant')
+  }
+
 }
