@@ -32,13 +32,19 @@ export class TenantViewComponent implements OnInit {
     await loading.present();
     await this.tenantService.getAllTenants()
       .subscribe(res => {
-        console.log(res);
-        this.tenants= res;
-        this.model=Object.keys(this.tenants[0]);
-        console.log('keys are')
-        console.log(this.model)
-        this.model_Caps=Object.keys(this.tenants[0]).map(r=>r.toUpperCase())
-        loading.dismiss();
+        if(res.length>0)
+        {
+          console.log(res);
+          this.tenants= res;
+          this.model=Object.keys(this.tenants[0]);
+          console.log('keys are')
+          console.log(this.model)
+          this.model_Caps=Object.keys(this.tenants[0]).map(r=>r.toUpperCase())
+          loading.dismiss();
+        }
+        else{
+          loading.dismiss();
+        }
       }, err => {
         console.log(err);
         loading.dismiss();

@@ -37,19 +37,22 @@ export class TenantRemoveComponent implements OnInit {
     await loading.present();
     await this.tenantService.getAllTenants()
       .subscribe(res => {
-        //console.log(res);
-        this.tenants= res;
-        this.model=Object.keys(this.tenants[0]);
-        this.model_Caps=Object.keys(this.tenants[0]).map(r=>r.toUpperCase())
-        this.tenants_withAttributes=Object.assign([], this.tenants)
-        this.tenants_withAttributes.forEach(
-          e=>e.checked=false
-        )
-        console.log('tenants_withAttributes');
-        console.log(this.tenants_withAttributes);
-        console.log('keys are')
-        console.log(this.model)
-        loading.dismiss();
+        if(res.length>0)
+        {
+          //console.log(res);
+          this.tenants= res;
+          this.model=Object.keys(this.tenants[0]);
+          this.model_Caps=Object.keys(this.tenants[0]).map(r=>r.toUpperCase())
+          this.tenants_withAttributes=Object.assign([], this.tenants)
+          this.tenants_withAttributes.forEach(
+            e=>e.checked=false
+          )
+          console.log('tenants_withAttributes');
+          console.log(this.tenants_withAttributes);
+          console.log('keys are')
+          console.log(this.model)
+          loading.dismiss();
+        }
       }, err => {
         console.log(err);
         loading.dismiss();
@@ -112,7 +115,7 @@ export class TenantRemoveComponent implements OnInit {
 
   async presentActionSheet() {
     const actionSheet = await this.actionSheetController.create({
-      header: 'Albums',
+      header: 'Action',
       buttons: [{
         text: 'Delete',
         role: 'destructive',
@@ -124,6 +127,23 @@ export class TenantRemoveComponent implements OnInit {
           }, err => {
             console.log(err);
           });
+          this.toggleCheckBoxes()
+          this.getAllTenants()
+        }
+      },
+      {
+        text: 'Delete All',
+        role: 'destructive',
+        icon: 'trash',
+        handler: () => {
+          console.log('Delete all clicked');
+          this.selected_tenants.forEach(e=>
+            this.tenantService.deleteTenant(e.tenantId)
+          .subscribe(res => {
+          }, err => {
+            console.log(err);
+          })
+          );
           this.toggleCheckBoxes()
           this.getAllTenants()
         }
