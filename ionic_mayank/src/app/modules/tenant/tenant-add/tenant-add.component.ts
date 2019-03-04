@@ -28,6 +28,7 @@ export class TenantAddComponent implements OnInit {
   ngOnInit() {
     console.log(this.natureOfIndustry)
   }
+  private Page_Name="Add Tenant"
   async saveTenant(){
     const loading = await this.loadingController.create({
       message: 'Saving ...',

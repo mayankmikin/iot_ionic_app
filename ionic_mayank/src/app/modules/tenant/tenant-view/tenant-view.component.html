@@ -26,7 +26,7 @@
   <ion-card-header>
 
     <!-- <ion-card-subtitle>Tenant</ion-card-subtitle> -->
-    <ion-card-title>Tenant Details</ion-card-title>
+    <ion-card-title>{{Page_Name}}</ion-card-title>
   </ion-card-header>
   <ion-content padding>
   
@@ -46,15 +46,16 @@
           <ion-col *ngFor="let attr of model;">{{tenant[attr]}}</ion-col>
           <!-- Round -->
          
-          <ion-col>
-            <ion-button (click)="editTenant()" shape="round" color="light">
+       
+            <ion-item>
+            <ion-button (click)="editTenant(tenant)" shape="round" color="light">
                 <ion-icon slot="icon-only" name="create"></ion-icon>
             </ion-button>
-          </ion-col>
+            </ion-item>
+        
 
         </ion-row>
     </ion-grid>
-
 
 
   </ion-card-content>

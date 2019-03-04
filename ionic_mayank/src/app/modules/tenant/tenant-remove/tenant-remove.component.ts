@@ -15,9 +15,10 @@ export class TenantRemoveComponent implements OnInit {
   private tenants_withAttributes=[]; // there is one extra attribute 'checked' to check if selected or not
   private model; // this field is used to show only small keys in the table
   private model_Caps;// this field is used to show headers in the Table
-  private enable_checkboxes=false;// this field is used to show hide check boxes
+  private hide_checkboxes=false;// this field is used to show hide check boxes
   private selected_tenants:Tenant[]=[]; // this field is used to store all the selected tenants object 
   private selectAllModel=false; // this field is used to check uncheck  header checkbox 
+  private Page_Name="Remove Tenant"
   constructor(private tenantService:TenantService,
     private loadingController:LoadingController,
     public actionSheetController: ActionSheetController
@@ -28,6 +29,7 @@ export class TenantRemoveComponent implements OnInit {
     this.getAllTenants()
   }
 
+ 
   async getAllTenants() {
     const loading = await this.loadingController.create({
       message: 'Please wait...',
@@ -40,6 +42,7 @@ export class TenantRemoveComponent implements OnInit {
         if(res.length>0)
         {
           //console.log(res);
+          console.log(this.tenants)
           this.tenants= res;
           this.model=Object.keys(this.tenants[0]);
           this.model_Caps=Object.keys(this.tenants[0]).map(r=>r.toUpperCase())

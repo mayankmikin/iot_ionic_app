@@ -37,4 +37,10 @@ export class TenantService {
     return  this.httpclient.patch(this.baseurl,id);
   }
 
+  editTenant(tenant:Tenant)
+  {
+   console.log('tenant to save is ',tenant);
+   this.url_call=this.baseurl+'/'+tenant.tenantId
+   return  this.httpclient.put<Tenant[]>(this.url_call,tenant);
+  }
 }

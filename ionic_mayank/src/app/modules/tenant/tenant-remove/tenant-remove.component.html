@@ -23,7 +23,7 @@
   <ion-card-header>
 
     <!-- <ion-card-subtitle>Tenant</ion-card-subtitle> -->
-    <ion-card-title>Tenant Details</ion-card-title>
+    <ion-card-title>{{Page_Name}}</ion-card-title>
    
   </ion-card-header>
   <ion-content padding>
@@ -33,7 +33,7 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-        <ion-checkbox [hidden]="enable_checkboxes" (click)="selectAllTenant()" [(ngModel)]="selectAllModel"></ion-checkbox> All  
+        <ion-checkbox [hidden]="hide_checkboxes" (click)="selectAllTenant()" [(ngModel)]="selectAllModel"></ion-checkbox> All  
         </ion-col>
         <ion-col>
          <ion-label>S NO</ion-label>
@@ -44,7 +44,7 @@
       </ion-row>
       <ion-row *ngFor="let tenant of tenants_withAttributes | grdFilter: {tenantId: searchText, tenantName:searchText,code:searchText,domainName:searchText,natureOfIndustry:searchText}; let i =index;  ">
         <ion-col>
-        <ion-checkbox [hidden]="enable_checkboxes" (click)="selectTenant(tenant)" [(ngModel)]="tenant.checked" ></ion-checkbox>  
+        <ion-checkbox [hidden]="hide_checkboxes" (click)="selectTenant(tenant)" [(ngModel)]="tenant.checked" ></ion-checkbox>  
         </ion-col>
         <ion-col>{{i}}</ion-col>
           <ion-col *ngFor="let attr of model;">{{tenant[attr]}}</ion-col>       
