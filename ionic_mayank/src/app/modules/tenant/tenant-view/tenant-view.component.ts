@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { LoadingController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { CommonUserService } from 'src/app/services/common-user.service';
+import { Account } from 'src/app/model/account';
 
 @Component({
   selector: 'app-tenant-view',
@@ -85,5 +86,4 @@ export class TenantViewComponent implements OnInit  {
           this.model_Caps=Object.keys(this.tenants[0]).map(r=>r.toUpperCase())
          
   }
-
 }
