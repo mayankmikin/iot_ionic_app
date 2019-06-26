@@ -24,12 +24,7 @@ export class AppComponent {
       title: 'Tenants',
       url: '/tenant',
       icon: 'people'
-    },
-    {
-      title: 'Account',
-      url: '/account',
-      icon: 'list'
-    },
+    }
   ];
 
   constructor(

@@ -15,8 +15,7 @@ const routes: Routes = [
     path: 'list',
     loadChildren: './list/list.module#ListPageModule'
   },
-  { path: 'tenant', loadChildren: './modules/tenant/tenant.module#TenantPageModule' },
-  { path: 'account', loadChildren: './modules/account/account.module#AccountPageModule' }
+  { path: 'tenant', loadChildren: './modules/tenant/tenant.module#TenantPageModule' }
 ];
 
 @NgModule({
