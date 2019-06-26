@@ -1,0 +1,54 @@
+<ion-content  [hidden]="devices.length==0">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+       <ion-label>S No</ion-label>
+      </ion-col>
+      <ion-col *ngFor="let attr of model_Caps">
+          <ion-label>{{attr}}</ion-label>
+         </ion-col>       
+    </ion-row>
+    <ion-row *ngFor="let device of devices; let i =index;  ">
+      <ion-col>{{i+1}}</ion-col>
+        <ion-col *ngFor="let attr of model;">{{device[attr]}}</ion-col>
+        <!-- Round -->
+       
+     
+          <!-- <ion-item>
+          <ion-button (click)="editdevice(device)" shape="round" color="light">
+              <ion-icon slot="icon-only" name="create"></ion-icon>
+          </ion-button>
+          </ion-item> -->
+      
+
+      </ion-row>
+  </ion-grid>
+
+
+</ion-content>
+
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+
+    <!-- <ion-tab-button tab="add">
+      <ion-label>Add New</ion-label>
+      <ion-icon name="add-circle"></ion-icon>
+    </ion-tab-button> -->
+    
+    <!-- <ion-tab-button tab="remove">
+        <ion-label>Remove</ion-label>
+        <ion-icon name="remove-circle"></ion-icon>
+    </ion-tab-button> -->
+    
+    <!-- <ion-tab-button tab="edit/:id">
+        <ion-label>Edit</ion-label>
+        <ion-icon name="create"></ion-icon>
+    </ion-tab-button> -->
+
+    <ion-tab-button tab="settings">
+      <ion-label>Settings</ion-label>
+      <ion-icon name="settings"></ion-icon>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+</ion-tabs>
