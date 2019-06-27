@@ -11,7 +11,7 @@ const apiurl=Urls.apiurl;
 export class TenantService {
 
   private baseurl=apiurl+"/tenant";
-  private url_call:string
+
   constructor(private  httpclient:HttpClient) { }
 
   getAllTenants()
@@ -19,28 +19,5 @@ export class TenantService {
    return  this.httpclient.get<Tenant[]>(this.baseurl);
   }
 
-  saveTenant(tenant:Tenant)
-  {
-   console.log('tenant to save is ',tenant);
-   return  this.httpclient.post<Tenant[]>(this.baseurl,tenant);
-  }
 
-  deleteTenant(id:string)
-  {
-    this.url_call=this.baseurl+'/'+id
-    console.log(this.url_call)
-    return  this.httpclient.delete(this.url_call);
-  }
-  
-  deactivateTenant(id:string)
-  {
-    return  this.httpclient.patch(this.baseurl,id);
-  }
-
-  editTenant(tenant:Tenant)
-  {
-   console.log('tenant to save is ',tenant);
-   this.url_call=this.baseurl+'/'+tenant.tenantId
-   return  this.httpclient.put<Tenant[]>(this.url_call,tenant);
-  }
 }
